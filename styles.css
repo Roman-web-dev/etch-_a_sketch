@@ -1,0 +1,16 @@
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    gap: 2px;
+}
+
+
+.cell {
+    flex:1 1 6.25%;
+    box-sizing: border-box;
+    background-color: brown;
+    outline: solid black 2px;
+    margin: -1px;
+}
