@@ -1,4 +1,6 @@
 const container = document.querySelector("#container")
+const button = document.querySelector("#btn")
+const numInput = document.querySelector("#numInput")
 
 function changeColor (e) {
     let color = e.target.style.backgroundColor
@@ -9,24 +11,35 @@ function changeColor (e) {
     }
 }
 
-let squresNumber = 16
-let cellWidth = (960 / squresNumber) / 960 * 100    // Adaptive cell width depending on number of squares
+function createGrid () {
+    container.innerHTML = "";
 
-let squredNumber = squresNumber * squresNumber
+    let cellWidth = 100 / squaresNumber    // Adaptive cell width depending on number of squares
 
-for(let i = 0; i < squredNumber; i++) {
-    const newCell = document.createElement("div")
-    newCell.classList.toggle("cell")
-    container.appendChild(newCell)
+    let squredNumber = squaresNumber * squaresNumber
+
+    for(let i = 0; i < squredNumber; i++) {
+        const newCell = document.createElement("div")
+        newCell.classList.add("cell")
+        container.appendChild(newCell)
+        newCell.addEventListener("mouseover", changeColor )
+        newCell.addEventListener("mouseout", changeColor )
+        newCell.style.flex = `1 1 ${cellWidth}%`
+    }
+    const cells = document.querySelectorAll(".cell")    
 }
 
-const cells = document.querySelectorAll(".cell")
 
 
-cells.forEach((cell) => {
-    cell.addEventListener("mouseover", changeColor )
-    cell.addEventListener("mouseout", changeColor )
-    cell.style.flex = `1 1 ${cellWidth}%`
+let squaresNumber = 16
+
+button.addEventListener("click", () => {
+    squaresNumber = parseInt(numInput.value)
+    if (squaresNumber > 100) {
+        alert("Must be less than 100")
+    }else createGrid()
 })
 
 
+
+createGrid()
