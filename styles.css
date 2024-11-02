@@ -23,7 +23,7 @@
 
 .cell {
     box-sizing: border-box;
-    background-color: brown;
+    opacity: 1;
     outline: solid black 2px;
     margin: -1px;
     aspect-ratio: 1 / 1;
